@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 mongoose.set("strictQuery", false);
 
-const connectDatabse = () => {
+const connectDatabase = () => {
   mongoose.connect(
     "mongodb+srv://admin:admin@cluster0.6rzjcgg.mongodb.net/test",
     {
@@ -14,4 +14,4 @@ const connectDatabse = () => {
     .catch((err) => console.log(err));
 };
 
-export default { connectDatabse };
+export default { connectDatabase };
