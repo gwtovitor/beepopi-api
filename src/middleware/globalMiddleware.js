@@ -1,5 +1,6 @@
-const userVerifyToSave = (req, res, next) => {
+import userService from "../service/userService.js";
 
+const verifyUserToSave = (req, res, next) => {
   try {
     const { email, username, password } = req.body;
 
@@ -9,8 +10,7 @@ const userVerifyToSave = (req, res, next) => {
   }
 };
 
-const userVerifyToLogin = (req, res, next) => {
-
+const verifyUserToLogin = (req, res, next) => {
   try {
     const { login, password } = req.body;
 
@@ -20,7 +20,14 @@ const userVerifyToLogin = (req, res, next) => {
   }
 };
 
+const verifyUserId = (req, res, next) => {
+  const user = userService.findById(req.params.id);
+
+  !user ? res.status(404).send({ message: "Usuario nao encontrado" }) : next();
+}
+
 export default {
-  userVerifyToSave,
-  userVerifyToLogin
+  verifyUserToSave,
+  verifyUserToLogin,
+  verifyUserId
 };
