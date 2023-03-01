@@ -1,6 +1,10 @@
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
 import userService from "../service/userService.js";
+
+dotenv.config();
 
 const encryptPassword = (req, res, next) => {
   try {
@@ -10,23 +14,55 @@ const encryptPassword = (req, res, next) => {
 
     next();
   } catch (err) {
-    res.status(500).send({ message: err })
+    res.status(500).send({ message: err.toString() });
   }
 };
 
 const verifyLogin = async (req, res, next) => {
-  const { login, password } = req.body;
+  try {
+    const { login, password } = req.body;
 
-  const user = await userService.findByUsername(login);
+    const user = await userService.findByUsername(login);
 
-  !user || user === null ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : null;
+    !user || user === null ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : null;
 
-  !bcrypt.compareSync(password, user.password) ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : req.user = user;
+    !bcrypt.compareSync(password, user.password) ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : req.user = user;
 
-  next();
+    next();
+  } catch (err) {
+    res.status(500).send({ message: err.toString() })
+  }
+};
+
+const verifyToken = (req, res, next) => {
+  try {
+    const authorization = req.headers.authorization.split(" ");
+
+    if (authorization.length < 2) res.status(401).send({ message: "Authorization invalido." });
+
+    const [schema, token] = authorization;
+
+    if (schema !== "Bearer") res.status(401).send({ message: "Authorization invalido." });
+
+    jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
+      try {
+        const user = await userService.findById(decoded.id);
+
+        !user ? res.status(401).send({ message: "Usuario nao encontrado." }) : req.user = user;
+
+        next();
+      } catch {
+        res.status(401).send({ message: err.toString() });
+      }
+    });
+
+  } catch (err) {
+    res.status(500).send({ message: err.toString() });
+  }
 };
 
 export default {
   encryptPassword,
-  verifyLogin
+  verifyLogin,
+  verifyToken
 };

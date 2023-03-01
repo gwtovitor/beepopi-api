@@ -6,8 +6,11 @@ const create = (user) => User.create(user);
 
 const findByUsername = (username) => User.findOne({ username: username }).select("+password");
 
+const findById = (id) => User.findById(id);
+
 export default {
   findAll,
   create,
-  findByUsername
+  findByUsername,
+  findById
 };
