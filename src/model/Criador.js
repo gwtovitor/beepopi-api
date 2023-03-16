@@ -1,29 +1,30 @@
 import mongoose from "mongoose";
 
-const profileSchema = new mongoose.Schema({
-  usuario: {
-    type: String,
+const criadorSchema = new mongoose.Schema({
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
     required: true
   },
-  nome: {
+  name: {
     type: String
   },
   bio: {
     type: String
   },
-  foto: {
+  img: {
     type: String
   },
   banner: {
     type: String
   },
-  seguidores: {
+  follows: {
     type: Array
   },
-  assinantes: {
+  signs: {
     type: Array
   },
-  redes: {
+  networks: {
     type: Array
   },
   posts: {
@@ -31,6 +32,4 @@ const profileSchema = new mongoose.Schema({
   }
 });
 
-const Profile = mongoose.model("Profile", profileSchema);
-
-export default Profile;
+export const Criador = mongoose.model("Criador", criadorSchema);
