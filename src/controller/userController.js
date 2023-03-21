@@ -1,6 +1,6 @@
 import userService from "../service/userService.js";
 
-const findAll = async (req, res) => {
+export async function findAllUser(req, res) {
   try {
     const users = await userService.findAll();
 
@@ -10,7 +10,7 @@ const findAll = async (req, res) => {
   }
 };
 
-const create = (req, res) => {
+export function createUser(req, res) {
   try {
     const user = userService.create(req.body);
 
@@ -18,9 +18,4 @@ const create = (req, res) => {
   } catch (err) {
     res.status(500).send({ message: err });
   }
-};
-
-export default {
-  findAll,
-  create
 };

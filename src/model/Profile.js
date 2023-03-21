@@ -1,12 +1,19 @@
 import mongoose from "mongoose";
 
-const criadorSchema = new mongoose.Schema({
+const profileSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
     required: true
   },
-  name: {
+  creator: {
+    type: Boolean,
+    default: false
+  },
+  firstName: {
+    type: String
+  },
+  lastName: {
     type: String
   },
   bio: {
@@ -29,7 +36,11 @@ const criadorSchema = new mongoose.Schema({
   },
   posts: {
     type: Array
-  }
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now()
+  },
 });
 
-export const Criador = mongoose.model("Criador", criadorSchema);
+export const Profile = mongoose.model("Criador", profileSchema);
