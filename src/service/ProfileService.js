@@ -15,3 +15,11 @@ export function findProfileByUser(userId) {
 export function createProfile(profile) {
   return Profile.create(profile);
 }
+
+export function updateProfile(id, profile) {
+  return Profile.findOneAndUpdate({ _id: id }, profile);
+}
+
+export function deleteProfile(id) {
+  return Profile.findOneAndDelete(id);
+}

@@ -16,3 +16,11 @@ export function findPostByUser(userId) {
 export function createPost(post) {
   return Post.create(post);
 }
+
+export function updatePost(id, post) {
+  return Post.findOneAndUpdate(id, post);
+}
+
+export function deletePost(id) {
+  return Post.findOneAndDelete(id);
+}

@@ -20,22 +20,40 @@ const profileSchema = new mongoose.Schema({
     type: String
   },
   img: {
-    type: String
+    type: String,
+    default: ""
   },
   banner: {
-    type: String
+    type: String,
+    default: ""
   },
-  follows: {
-    type: Array
+  role: {
+    type: String,
+    default: ""
   },
-  signs: {
-    type: Array
+  followers: {
+    type: Array,
+    default: []
+  },
+  following: {
+    type: Array,
+    default: []
+  },
+  subscribers: {
+    type: Array,
+    default: []
+  },
+  subscribing: {
+    type: Array,
+    default: []
   },
   networks: {
-    type: Array
+    type: Array,
+    default: []
   },
   posts: {
-    type: Array
+    type: Array,
+    default: []
   },
   createdAt: {
     type: Date,
