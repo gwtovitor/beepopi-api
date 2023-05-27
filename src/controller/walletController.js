@@ -31,7 +31,7 @@ export const update = async (req, res) => {
     res.status(500).send({ message: error });
   }
 }
-
+/*
 export const delete = async (req, res) => {
   try {
     const { id } = req.params.id;
@@ -42,4 +42,4 @@ export const delete = async (req, res) => {
   } catch (error) {
     res.status(500).send({ message: error });
   }
-}
+}*/

@@ -2,7 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import userService from "../service/userService.js";
+//import userService from "../service/userService.js";
 
 dotenv.config();
 
