@@ -1,4 +1,4 @@
-import userService from "../service/userService.js";
+import { findUserById } from "../service/userService.js";
 
 const verifyUserToSave = (req, res, next) => {
   try {
@@ -21,9 +21,9 @@ const verifyUserToLogin = (req, res, next) => {
 };
 
 const verifyUserId = (req, res, next) => {
-  const user = userService.findById(req.params.id);
+  const user = findUserById(req.params.id);
 
-  !user ? res.status(404).send({ message: "Usuario nao encontrado" }) : next();
+  !user ? res.status(404).send({ message: "Usuário nao encontrado" }) : next();
 }
 
 export default {

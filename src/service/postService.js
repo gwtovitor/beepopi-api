@@ -1,5 +1,6 @@
 import { Post } from "../model/Post.js";
 
+//nunca usar
 export function findAllPost() {
   return Post.find();
 }
@@ -9,7 +10,6 @@ export function findPostById(id) {
 }
 
 export function findPostByUser(userId) {
-  console.log(userId)
   return Post.find({ user: userId });
 }
 

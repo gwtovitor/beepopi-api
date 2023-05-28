@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const PayMethodSchema = mongoose.Schema({
   wallet: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Wallet',
+    ref: 'User',
     required: true
   },
   cardNumber: {

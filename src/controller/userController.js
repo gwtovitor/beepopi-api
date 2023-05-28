@@ -1,10 +1,34 @@
-import { findAllUser, createUser, updateUser, deleteUser } from "../service/userService.js";
+import { findAllUser, createUser, updateUser, deleteUser, findUserById } from "../service/userService.js";
 
 export const findAll = async (req, res) => {
   try {
     const users = await findAllUser();
 
     res.status(200).send(users);
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export const findById = async (req, res) => {
+  try {
+    const id = req.params.id;
+
+    const user = await findUserById(id);
+
+    res.status(200).send(user);
+  } catch (err) {
+    res.status(500).send({ message: err });
+  }
+}
+
+export const findByUsername = async (req, res) => {
+  try {
+    const { username } = req.body;
+
+    const user = await findUserByUsername(username);
+
+    res.status(200).send(user);
   } catch (err) {
     res.status(500).send({ message: err });
   }

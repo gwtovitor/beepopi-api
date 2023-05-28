@@ -6,6 +6,13 @@ const WalletSchema = mongoose.Schema({
     ref: 'User',
     required: true
   },
+  saldo: {
+    type: String,
+    required: true
+  },
+  saque: {
+    type: String
+  }
 });
 
 export const Wallet = mongoose.model('Wallet', WalletSchema);

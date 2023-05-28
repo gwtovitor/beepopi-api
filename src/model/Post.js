@@ -10,10 +10,15 @@ const PostSchema = mongoose.Schema({
     required: true
   },
   likes: {
-    type: Array
+    type: Array,
+    default: []
   },
   comments: {
-    type: Array
+    type: Array,
+    default: []
+  },
+  denyComments: {
+    type: Boolean
   },
   createdAt: {
     type: Date,

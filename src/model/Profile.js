@@ -31,6 +31,10 @@ const profileSchema = new mongoose.Schema({
     type: String,
     default: ""
   },
+  nationality: {
+    type: String,
+    required: true
+  },
   followers: {
     type: Array,
     default: []
@@ -61,4 +65,4 @@ const profileSchema = new mongoose.Schema({
   },
 });
 
-export const Profile = mongoose.model("Criador", profileSchema);
+export const Profile = mongoose.model("Profile", profileSchema);
