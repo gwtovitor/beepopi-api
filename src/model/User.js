@@ -16,6 +16,10 @@ const UserSchema = mongoose.Schema({
     select: false,
     require: true
   },
+  paisResidencia: {
+    type: String,
+    require: true
+  },
   dataNascimento: {
     type: Date,
   },
