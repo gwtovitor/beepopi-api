@@ -19,6 +19,9 @@ const UserSchema = mongoose.Schema({
   dataNascimento: {
     type: Date,
   },
+  paisResidencia: {
+    type: String,
+  },
   createdAt: {
     type: Date,
     default: Date.now()

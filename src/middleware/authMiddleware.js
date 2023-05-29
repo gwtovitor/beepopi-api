@@ -2,7 +2,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import { findById, findByUsername } from '../controller/userController.js';
+import { findUserByUsername } from '../service/userService.js';
+import { findUserById } from '../service/userService.js';
 
 dotenv.config();
 
@@ -22,9 +23,11 @@ const verifyLogin = async (req, res, next) => {
   try {
     const { login, password } = req.body;
 
-    const user = await findByUsername(login);
+    const user = await findUserByUsername(login);
 
     !user || user === null ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : null;
+
+    console.log(user.password)
 
     !bcrypt.compareSync(password, user.password) ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : req.user = user;
 
@@ -46,7 +49,7 @@ const verifyToken = (req, res, next) => {
 
     jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
       try {
-        const user = await findById(decoded.id);
+        const user = await findUserById(decoded.id);
 
         !user ? res.status(401).send({ message: "Usuario nao encontrado." }) : req.user = user;
 
