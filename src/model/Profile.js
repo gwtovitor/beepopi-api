@@ -17,7 +17,8 @@ const profileSchema = new mongoose.Schema({
     type: String
   },
   bio: {
-    type: String
+    type: String,
+    default: ""
   },
   img: {
     type: String,
@@ -30,10 +31,6 @@ const profileSchema = new mongoose.Schema({
   role: {
     type: String,
     default: ""
-  },
-  nationality: {
-    type: String,
-    required: true
   },
   followers: {
     type: Array,

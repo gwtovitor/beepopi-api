@@ -4,21 +4,43 @@ export async function findAll(req, res) {
   try {
     const profiles = await findAllProfile();
 
-    res.send(profiles);
+    res.status(200).send(profiles);
   } catch (error) {
-    res.status(500).send({ message: error });
+    res.status(500).send({ message: error.toString() });
+  }
+}
+
+export async function findById(req, res) {
+  try {
+    const { id } = req.params;
+
+    const profile = await findAllProfile();
+
+    res.status(200).send(profile);
+  } catch (error) {
+    res.status(500).send({ message: error.toString() });
+  }
+}
+
+export async function findByUser(req, res) {
+  try {
+    const { userId } = req.params;
+
+    const profile = await findAllProfile();
+
+    res.status(200).send(profile);
+  } catch (error) {
+    res.status(500).send({ message: error.toString() });
   }
 }
 
 export async function create(req, res) {
   try {
-    // const profile = await createProfile(req.body);
+    const profile = await createProfile(req.body);
 
-    console.log(req.files)
-
-    res.status(201).send();
+    res.status(201).send(profile);
   } catch (error) {
-    res.status(500).send({ message: error });
+    res.status(500).send({ message: error.toString() });
   }
 }
 
@@ -28,7 +50,7 @@ export async function update(req, res) {
 
     res.status(200).send({ message: "Profile has been updated." });
   } catch (error) {
-    res.status(500).send({ message: error });
+    res.status(500).send({ message: error.toString() });
   }
 }
 
@@ -38,6 +60,6 @@ export async function del(req, res) {
 
     res.status(200).send({ message: "Profile has been deleted." });
   } catch (error) {
-    res.status(500).send({ message: error });
+    res.status(500).send({ message: error.toString() });
   }
 }

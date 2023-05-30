@@ -25,11 +25,13 @@ const verifyLogin = async (req, res, next) => {
 
     const user = await findUserByUsername(login);
 
-    !user || user === null ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : null;
+    if (!user) {
+      return res.status(404).send({ message: "Usuario ou Senha invalidos." });
+    }
 
-    console.log(user.password)
+    if (!bcrypt.compareSync(password, user.password)) return res.status(404).send({ message: "Usuario ou Senha invalidos." });
 
-    !bcrypt.compareSync(password, user.password) ? res.status(404).send({ message: "Usuario ou Senha invalidos." }) : req.user = user;
+    req.user = user;
 
     next();
   } catch (err) {
