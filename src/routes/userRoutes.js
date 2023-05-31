@@ -7,6 +7,6 @@ import globalMiddleware from "../middleware/globalMiddleware.js";
 export const userRoutes = express.Router();
 
 userRoutes.get("/", findAll);
-userRoutes.post("/", authMiddleware.encryptPassword, create);
+userRoutes.post("/", globalMiddleware.verifyUserToSave, authMiddleware.encryptPassword, create);
 userRoutes.patch("/:id", update);
 userRoutes.delete("/:id", del);
