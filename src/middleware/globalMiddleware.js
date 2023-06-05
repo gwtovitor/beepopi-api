@@ -4,7 +4,7 @@ const verifyUserToSave = async (req, res, next) => {
   try {
     const { email, username, password, cpf } = req.body;
 
-    if (!email || !username || !password) return res.status(400).send({ message: "Todos os campos devem ser preenchidos" });
+    if (!email || !username || !password || !cpf) return res.status(400).send({ message: "Todos os campos devem ser preenchidos" });
 
     if (await findUserByEmail(email)) return res.status(400).send({ message: "Email já está sendo usado." });
 
