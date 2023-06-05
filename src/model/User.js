@@ -23,6 +23,11 @@ const UserSchema = mongoose.Schema({
   dataNascimento: {
     type: Date,
   },
+  cpf: {
+    type: String,
+    unique: true,
+    require: true
+  },
   createdAt: {
     type: Date,
     default: Date.now()

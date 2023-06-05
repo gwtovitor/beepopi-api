@@ -1,14 +1,16 @@
-import { findUserById, findUserByUsername, findUserByEmail } from "../service/userService.js";
+import { findUserById, findUserByUsername, findUserByEmail, findUserByCpf } from "../service/userService.js";
 
 const verifyUserToSave = async (req, res, next) => {
   try {
-    const { email, username, password } = req.body;
+    const { email, username, password, cpf } = req.body;
 
     if (!email || !username || !password) return res.status(400).send({ message: "Todos os campos devem ser preenchidos" });
 
     if (await findUserByEmail(email)) return res.status(400).send({ message: "Email já está sendo usado." });
 
     if (await findUserByUsername(username)) return res.status(400).send({ message: "Usuário já está sendo usado." });
+
+    if (await findUserByCpf(cpf)) return res.status(400).send({ message: "CPF já está sendo usado." });
 
     next();
   } catch (err) {

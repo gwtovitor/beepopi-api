@@ -8,6 +8,8 @@ export const findUserByEmail = (email) => User.findOne({ email: email }).select(
 
 export const findUserByUsername = (username) => User.findOne({ username: username }).select("+password");
 
+export const findUserByCpf = (cpf) => User.findOne({ cpf: cpf }).select("+password");
+
 export const findUserById = (id) => User.findById(id);
 
 export const updateUser = (id, user) => User.findOneAndUpdate(id, user);
