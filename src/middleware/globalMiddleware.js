@@ -2,6 +2,8 @@ import { findUserById, findUserByUsername, findUserByEmail, findUserByCpf } from
 
 const verifyUserToSave = async (req, res, next) => {
   try {
+
+    console.log(req.body)
     const { email, username, password, cpf } = req.body;
 
     if (!email || !username || !password || !cpf) return res.status(400).send({ message: "Todos os campos devem ser preenchidos" });
@@ -24,14 +26,24 @@ const verifyUserToLogin = (req, res, next) => {
 
     (!login || !password) ? res.status(400).send({ message: "Todos os campos devem ser preenchidos" }) : next();
   } catch (err) {
-    res.status(500).send({ message: err });
+    res.status(500).send({ message: err.toString() });
   }
 };
 
 const verifyUserId = (req, res, next) => {
-  const user = findUserById(req.params.id);
+  try {
+    const { id } = req.params;
 
-  !user ? res.status(404).send({ message: "Usuário nao encontrado" }) : next();
+    const user = findUserById(id);
+
+    if (!user) return res.status(404).send({ message: "Usuário nao encontrado" });
+
+    req.id = id;
+
+    next();
+  } catch (err) {
+    res.status(500).send({ message: err.toString() });
+  }
 }
 
 export default {

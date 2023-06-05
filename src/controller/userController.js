@@ -6,7 +6,7 @@ export const findAll = async (req, res) => {
 
     res.status(200).send(users);
   } catch (err) {
-    res.status(500).send({ message: err });
+    res.status(500).send({ message: err.toString() });
   }
 }
 
@@ -18,7 +18,7 @@ export const findById = async (req, res) => {
 
     res.status(200).send(user);
   } catch (err) {
-    res.status(500).send({ message: err });
+    res.status(500).send({ message: err.toString() });
   }
 }
 
@@ -40,30 +40,29 @@ export const create = async (req, res) => {
 
     res.status(200).send(user);
   } catch (err) {
-    res.status(500).send({ message: err });
+    res.status(500).send({ message: err.toString() });
   }
 }
 
 export const update = async (req, res) => {
   try {
-    const { id } = req.params.id;
 
-    const user = await updateUser(id, req.body);
+    const user = await updateUser(req.id, req.body);
 
     res.status(200).send({ message: 'User has been updated.' });
-  } catch (error) {
-    res.status(500).send({ message: error });
+  } catch (err) {
+    res.status(500).send({ message: err.toString() });
   }
 }
 
 export const del = async (req, res) => {
   try {
-    const { id } = req.params.id;
+    const { id } = req.params;
 
     const user = await deleteUser(id);
 
     res.status(200).send({ message: 'User has been deleted.' });
-  } catch (error) {
-    res.status(500).send({ message: error });
+  } catch (err) {
+    res.status(500).send({ message: err.toString() });
   }
 }

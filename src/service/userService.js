@@ -12,6 +12,6 @@ export const findUserByCpf = (cpf) => User.findOne({ cpf: cpf }).select("+passwo
 
 export const findUserById = (id) => User.findById(id);
 
-export const updateUser = (id, user) => User.findOneAndUpdate(id, user);
+export const updateUser = (id, user) => User.findByIdAndUpdate(id, user);
 
-export const deleteUser = (id) => User.findOneAndDelete(id);
+export const deleteUser = (id) => User.findByIdAndDelete(id);
