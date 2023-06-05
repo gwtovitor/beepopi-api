@@ -46,7 +46,6 @@ export const create = async (req, res) => {
 
 export const update = async (req, res) => {
   try {
-
     const user = await updateUser(req.id, req.body);
 
     res.status(200).send({ message: 'User has been updated.' });
@@ -57,9 +56,7 @@ export const update = async (req, res) => {
 
 export const del = async (req, res) => {
   try {
-    const { id } = req.params;
-
-    const user = await deleteUser(id);
+    const user = await deleteUser(req.id);
 
     res.status(200).send({ message: 'User has been deleted.' });
   } catch (err) {
