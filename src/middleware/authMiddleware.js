@@ -2,8 +2,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 
-import { findUserByUsername } from '../service/userService.js';
-import { findUserById } from '../service/userService.js';
+import { findUserByUsername, findUserById, findUserByEmail } from '../service/userService.js';
 
 dotenv.config();
 
@@ -23,10 +22,16 @@ const verifyLogin = async (req, res, next) => {
   try {
     const { login, password } = req.body;
 
-    const user = await findUserByUsername(login);
+    let user = {};
 
-    if (!user) {
+    const email = await findUserByEmail(login);
+
+    const username = await findUserByUsername(login);
+
+    if (!email && !username) {
       return res.status(404).send({ message: "Usuario ou Senha invalidos." });
+    } else {
+      !email ? user = username : user = email;
     }
 
     if (!bcrypt.compareSync(password, user.password)) return res.status(404).send({ message: "Usuario ou Senha invalidos." });
