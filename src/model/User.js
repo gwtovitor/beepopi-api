@@ -25,8 +25,7 @@ const UserSchema = mongoose.Schema({
   },
   cpf: {
     type: String,
-    unique: true,
-    require: true
+    unique: true
   },
   createdAt: {
     type: Date,
