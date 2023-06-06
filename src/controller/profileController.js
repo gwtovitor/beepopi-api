@@ -1,4 +1,4 @@
-import { createProfile, deleteProfile, findAllProfile, findProfileById, findProfileByUser, updateProfile } from '../service/profileService.js';
+import { createProfile, deleteProfile, findAllProfile, findProfileById, findProfileByName, findProfileByUser, updateProfile } from '../service/profileService.js';
 
 export async function findAll(req, res) {
   try {
@@ -27,6 +27,18 @@ export async function findByUser(req, res) {
     const { userId } = req.params;
 
     const profile = await findProfileByUser(userId);
+
+    res.status(200).send(profile);
+  } catch (error) {
+    res.status(500).send({ message: error.toString() });
+  }
+}
+
+export async function findProfile(req, res) {
+  try {
+    const { data } = req.body;
+
+    const profile = await findProfileByName(data);
 
     res.status(200).send(profile);
   } catch (error) {

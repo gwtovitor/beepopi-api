@@ -9,7 +9,11 @@ export function findProfileById(id) {
 }
 
 export function findProfileByUser(userId) {
-  return Profile.findOne(userId);
+  return Profile.findOne({ user: userId });
+}
+
+export function findProfileByName(data) {
+  return Profile.findOne({ firstName: data });
 }
 
 export function createProfile(profile) {
