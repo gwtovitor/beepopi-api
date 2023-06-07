@@ -10,6 +10,9 @@ const profileSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  valorAssinatura: {
+    type: String
+  },
   firstName: {
     type: String
   },
