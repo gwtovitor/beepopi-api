@@ -46,13 +46,18 @@ const verifyLogin = async (req, res, next) => {
 
 const verifyToken = (req, res, next) => {
   try {
-    const authorization = req.headers.authorization.split(" ");
 
-    if (authorization.length < 2) res.status(401).send({ message: "Authorization invalido." });
+    const authorization = req.headers.authorization;
 
-    const [schema, token] = authorization;
+    if (!authorization) return res.status(401).send({ message: "Token invalido." });
 
-    if (schema !== "Bearer") res.status(401).send({ message: "Authorization invalido." });
+    const authorizationSplit = authorization.split(" ");
+
+    if (authorizationSplit.length < 2) res.status(401).send({ message: "Token invalido." });
+
+    const [schema, token] = authorizationSplit;
+
+    if (schema !== "Bearer") res.status(401).send({ message: "Token invalido." });
 
     jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
       try {
