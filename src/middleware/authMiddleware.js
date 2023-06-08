@@ -49,21 +49,21 @@ const verifyToken = (req, res, next) => {
 
     const authorization = req.headers.authorization;
 
-    if (!authorization) return res.status(401).send({ message: "Token invalido." });
+    if (!authorization) return res.status(401).send({ message: "Token inválido." });
 
     const authorizationSplit = authorization.split(" ");
 
-    if (authorizationSplit.length < 2) res.status(401).send({ message: "Token invalido." });
+    if (authorizationSplit.length < 2) res.status(401).send({ message: "Token inválido." });
 
     const [schema, token] = authorizationSplit;
 
-    if (schema !== "Bearer") res.status(401).send({ message: "Token invalido." });
+    if (schema !== "Bearer") res.status(401).send({ message: "Token inválido." });
 
     jwt.verify(token, process.env.SECRET_JWT, async (err, decoded) => {
       try {
         const user = await findUserById(decoded.id);
 
-        !user ? res.status(401).send({ message: "Usuario nao encontrado." }) : req.user = user;
+        !user ? res.status(401).send({ message: "Usuário nao encontrado." }) : req.user = user;
 
         next();
       } catch {
