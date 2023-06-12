@@ -8,6 +8,7 @@ import authRoutes from './src/routes/authRoutes.js';
 import { profileRoutes } from './src/routes/profileRoutes.js';
 import { postRoutes } from './src/routes/postRoutes.js';
 import { walletRoutes } from './src/routes/walletRoutes.js';
+import { uploadRoutes } from './src/routes/uploadRoutes.js';
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use("/user", userRoutes);
 app.use("/login", authRoutes.router);
 app.use("/profile", profileRoutes);
 app.use("/post", postRoutes);
+app.use("/upload", uploadRoutes);
 app.use("/wallet", walletRoutes);
 
-app.listen(3333, () => console.log("online port 3333"));
+app.listen(3333, () => console.log('online port 3333'));
