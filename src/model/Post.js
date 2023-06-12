@@ -5,9 +5,12 @@ const PostSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  description: {
+  content: {
     type: String,
     required: true
+  },
+  legenda: {
+    type: String,
   },
   likes: {
     type: Array,

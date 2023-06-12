@@ -15,7 +15,7 @@ const TicketSchema = mongoose.Schema({
   midia: {
     type: String,
     deafult: ''
-  }
+  },
   createdAt: {
     type: Date,
     deafult: Date.now()
