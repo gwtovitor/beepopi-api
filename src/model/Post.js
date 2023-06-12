@@ -12,6 +12,10 @@ const PostSchema = mongoose.Schema({
   legenda: {
     type: String,
   },
+  price:{
+    type: String,
+    default: '0,00'
+  },
   likes: {
     type: Array,
     default: []
