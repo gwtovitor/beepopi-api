@@ -8,8 +8,9 @@ const currentFilePath = fileURLToPath(import.meta.url);
 const currentDirectory = dirname(currentFilePath);
 const uploadDirectory = resolve(currentDirectory, '..', '..', 'tpm', 'uploads');
 
-const storageTypes = {
-  local: multer.diskStorage({
+const multerConfig = {
+  dest: uploadDirectory,
+  storage: multer.diskStorage({
     destination: (req, file, cb) => {
       cb(null, uploadDirectory);
     },
@@ -21,15 +22,9 @@ const storageTypes = {
       });
     },
   }),
-  s3:
-    limits: {
-      fileSize: 2 * 1024 * 1024,
-  }
-}
-
-const multerConfig = {
-  dest: uploadDirectory,
-  storage: ,
+  limits: {
+    fileSize: 2 * 1024 * 1024,
+  },
   fileFilter: (req, file, cb) => {
     const allowedMimes = ['image/jpeg', 'image/pjpeg', 'image/png', 'image/gif'];
     if (allowedMimes.includes(file.mimetype)) {

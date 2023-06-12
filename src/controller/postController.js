@@ -1,4 +1,4 @@
-import { createPost, deletePost, findAllPost, findPostByUser, updatePost } from '../service/postService.js';
+import { createPost, deletePost, findAllPost, findPostById, findPostByUser, updatePost } from '../service/postService.js';
 
 export async function findAll(req, res) {
   try {
@@ -12,6 +12,12 @@ export async function findAll(req, res) {
 
 export async function findByUser(req, res) {
   const post = await findPostByUser(req.body.user);
+
+  res.send(post);
+}
+
+export async function findById(req, res) {
+  const post = await findPostById(req.params.id);
 
   res.send(post);
 }
