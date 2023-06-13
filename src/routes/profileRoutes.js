@@ -6,7 +6,8 @@ import authMiddleware from '../middleware/authMiddleware.js';
 export const profileRoutes = express.Router();
 
 profileRoutes.get("/", findAll);
-profileRoutes.get("/:id", authMiddleware.verifyToken, findById);
+// profileRoutes.get("/:id", authMiddleware.verifyToken, findById);
+profileRoutes.get("/:id", findById);
 profileRoutes.get("/find/search", findProfile);
 profileRoutes.get("/user/:userId", findByUser);
 profileRoutes.post("/", create);

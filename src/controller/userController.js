@@ -1,4 +1,4 @@
-import { findAllUser, createUser, updateUser, deleteUser, findUserById } from "../service/userService.js";
+import { findAllUser, createUser, updateUser, deleteUser, findUserById, findUserByUsername } from "../service/userService.js";
 
 export const findAll = async (req, res) => {
   try {
@@ -24,7 +24,7 @@ export const findById = async (req, res) => {
 
 export const findByUsername = async (req, res) => {
   try {
-    const { username } = req.body;
+    const { username } = req.params;
 
     const user = await findUserByUsername(username);
 
