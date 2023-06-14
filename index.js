@@ -12,6 +12,7 @@ import { postRoutes } from './src/routes/postRoutes.js';
 import { walletRoutes } from './src/routes/walletRoutes.js';
 import { uploadRoutes } from './src/routes/uploadRoutes.js';
 import { feedRoutes } from './src/routes/feedRoutes.js';
+import { vertRoutes } from './src/routes/vertRoutes.js';
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use("/login", authRoutes.router);
 app.use("/profile", profileRoutes);
 app.use("/feed", feedRoutes);
 app.use("/post", postRoutes);
+app.use("/vert", vertRoutes);
 app.use("/upload", uploadRoutes);
 app.use("/wallet", walletRoutes);
 
