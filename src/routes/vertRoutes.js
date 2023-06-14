@@ -7,5 +7,5 @@ vertRoutes.get('/', findAll);
 vertRoutes.get('/:id', findById);
 vertRoutes.get('/user/:id', findByUser);
 vertRoutes.post('/', create);
-vertRoutes.update('/', update);
+vertRoutes.patch('/', update);
 vertRoutes.delete('/:id', remove);
