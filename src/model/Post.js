@@ -27,6 +27,10 @@ const PostSchema = mongoose.Schema({
   denyComments: {
     type: Boolean
   },
+  agendamentoPost: {
+    type: Date,
+    default: Date.now()
+  },
   createdAt: {
     type: Date,
     default: Date.now()
