@@ -5,6 +5,10 @@ const ComentarioSchema = mongoose.Schema({
     type: String,
     require: true
   },
+  post: {
+    type: String,
+    require: true
+  },
   content: {
     type: String,
   },
