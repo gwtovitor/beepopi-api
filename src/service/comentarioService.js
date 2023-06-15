@@ -1,8 +1,8 @@
 import { Comentario } from '../model/Comentario.js';
 
-export const findAllComentario = () => Comentario.findAll();
+export const findAllComentario = () => Comentario.find();
 
-export const findComentarioById = (id) => Comentario.findAll();
+export const findComentarioById = (id) => Comentario.findById(id);
 
 export const findComentarioByProfile = (profileId) => Comentario.find({ perfil: profileId });
 
