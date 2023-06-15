@@ -31,7 +31,9 @@ export async function create(req, res) {
 // * verificar
 export async function update(req, res) {
   try {
-    const { id } = req.params.id
+    const { id } = req.params
+
+    console.log(id, req.body)
 
     const post = await updatePost(id, req.body);
 
@@ -43,7 +45,7 @@ export async function update(req, res) {
 
 export async function del(req, res) {
   try {
-    const { id } = req.params.id;
+    const { id } = req.params;
 
     const post = await deletePost(id);
 
