@@ -8,6 +8,6 @@ export const findVertByUser = (id) => Vert.find({ user: id });
 
 export const createVert = (vert) => Vert.create(vert);
 
-export const updateVert = (id, vert) => Vert.findByIdAndDelete(id, vert);
+export const updateVert = (id, vert) => Vert.findByIdAndUpdate(id, vert);
 
 export const deleteVert = (id) => Vert.findByIdAndDelete(id);
