@@ -18,9 +18,9 @@ export function createPost(post) {
 }
 
 export function updatePost(id, post) {
-  return Post.findOneAndUpdate(id, post);
+  return Post.findByIdAndUpdate(id, post);
 }
 
 export function deletePost(id) {
-  return Post.findOneAndDelete(id);
+  return Post.findByIdAndDelete(id);
 }

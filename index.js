@@ -28,6 +28,7 @@ app.use("/feed", feedRoutes);
 app.use("/post", postRoutes);
 app.use("/vert", vertRoutes);
 app.use("/upload", uploadRoutes);
+// app.use("/comentario", comentarioRoutes);
 app.use("/wallet", walletRoutes);
 
 app.listen(3333, () => console.log('online port 3333'));
