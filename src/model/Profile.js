@@ -11,7 +11,8 @@ const profileSchema = new mongoose.Schema({
     default: false
   },
   valorAssinatura: {
-    type: String
+    type: String,
+    default: '0,00'
   },
   firstName: {
     type: String
