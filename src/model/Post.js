@@ -14,7 +14,7 @@ const PostSchema = mongoose.Schema({
   },
   price:{
     type: String,
-    default: '20,00'
+    default: '0,00'
   },
   likes: {
     type: Array,
