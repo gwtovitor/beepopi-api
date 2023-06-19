@@ -24,9 +24,9 @@ export const findById = async (req, res) => {
 
 export const findByProfile = async (req, res) => {
   try {
-    const { profileId } = req.params;
+    const { id } = req.params;
 
-    const comentario = await findComentarioByProfile(profileId);
+    const comentario = await findComentarioByProfile(id);
 
     res.status(200).send(comentario);
   } catch (err) {

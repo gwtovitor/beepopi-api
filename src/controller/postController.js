@@ -11,7 +11,9 @@ export async function findAll(req, res) {
 }
 
 export async function findByUser(req, res) {
-  const post = await findPostByUser(req.body.user);
+  const { id } = req.params
+
+  const post = await findPostByUser(id);
 
   res.send(post);
 }
