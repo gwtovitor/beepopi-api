@@ -30,6 +30,10 @@ const UserSchema = mongoose.Schema({
     type: Date,
     default: Date.now()
   },
+  estaativo: {
+    type: String,
+    default: "false"
+  },
 });
 
 const User = mongoose.model("User", UserSchema);
