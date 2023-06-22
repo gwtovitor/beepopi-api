@@ -29,7 +29,6 @@ const UserSchema = mongoose.Schema({
   isActive: {
     type: Boolean,
     default: false,
-    select: true
   },
   createdAt: {
     type: Date,
