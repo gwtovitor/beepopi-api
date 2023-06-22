@@ -14,6 +14,7 @@ import { uploadRoutes } from './src/routes/uploadRoutes.js';
 import { feedRoutes } from './src/routes/feedRoutes.js';
 import { vertRoutes } from './src/routes/vertRoutes.js';
 import { comentarioRoutes } from './src/routes/comentarioRoutes.js';
+import { documentosRoutes } from './src/routes/documentosRoutes.js';
 
 const app = express();
 
@@ -25,6 +26,7 @@ app.use(express.json({ limit: "10mb", extended: true }));
 app.use("/user", userRoutes);
 app.use("/login", authRoutes.router);
 app.use("/profile", profileRoutes);
+app.use("/documentos", documentosRoutes);
 app.use("/feed", feedRoutes);
 app.use("/post", postRoutes);
 app.use("/vert", vertRoutes);

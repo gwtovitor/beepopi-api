@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const DocumentoSchema = mongoose.Schema({
+const DocumentosSchema = mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
     unique: true
@@ -27,4 +27,4 @@ const DocumentoSchema = mongoose.Schema({
   }
 });
 
-export const Documento = mongoose.model('Documento', DocumentoSchema);
+export const Documentos = mongoose.model('Documentos', DocumentosSchema);
