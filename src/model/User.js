@@ -26,13 +26,14 @@ const UserSchema = mongoose.Schema({
   cpf: {
     type: String
   },
+  isActive: {
+    type: Boolean,
+    default: false,
+    select: true
+  },
   createdAt: {
     type: Date,
     default: Date.now()
-  },
-  estaativo: {
-    type: String,
-    default: "false"
   },
 });
 
