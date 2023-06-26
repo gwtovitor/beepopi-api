@@ -6,7 +6,7 @@ const PostSchema = mongoose.Schema({
     required: true
   },
   content: {
-    type: String,
+    type: Array,
     required: true
   },
   legenda: {
@@ -30,6 +30,10 @@ const PostSchema = mongoose.Schema({
   agendamentoPost: {
     type: Date,
     default: Date.now()
+  },
+  fotoCapa: {
+    type: Boolean,
+    default: false
   },
   createdAt: {
     type: Date,
