@@ -60,6 +60,10 @@ const profileSchema = new mongoose.Schema({
     type: Array,
     default: []
   },
+  arquivados: {
+    type: Array,
+    default: []
+  },
   createdAt: {
     type: Date,
     default: Date.now()
