@@ -12,7 +12,7 @@ const PostSchema = mongoose.Schema({
   legenda: {
     type: String,
   },
-  price:{
+  price: {
     type: String,
     default: '0,00'
   },
@@ -27,6 +27,9 @@ const PostSchema = mongoose.Schema({
   denyComments: {
     type: Boolean
   },
+  privado: {
+    type: Boolean
+  },
   agendamentoPost: {
     type: Date,
     default: Date.now()
@@ -34,7 +37,7 @@ const PostSchema = mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now()
-  },
+  }
 })
 
 export const Post = mongoose.model("Post", PostSchema);

@@ -6,7 +6,7 @@ export const postRoutes = express.Router();
 
 postRoutes.get("/", findAll);
 postRoutes.get("/:id", findById);
-postRoutes.get("/:profile", findByUser);
+postRoutes.get("/profile/:id", findByUser);
 postRoutes.post("/", create);
 postRoutes.patch("/:id", update);
 postRoutes.delete("/:id", del);

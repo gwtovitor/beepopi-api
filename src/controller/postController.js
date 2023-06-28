@@ -11,11 +11,20 @@ export async function findAll(req, res) {
 }
 
 export async function findByUser(req, res) {
-  const { id } = req.params
+  const { id } = req.params;
+  const { logado } = req.body;
 
-  const post = await findPostByUser(id);
+  if (logado == id) {
+    const logPosts = await findPostByUser(id);
+    console.log(logPosts.length)
 
-  res.send(post);
+    return res.send(logPosts);
+  }
+
+  const posts = verificaPrivado(await findPostByUser(id));
+  console.log(posts.length)
+
+  res.send(posts);
 }
 
 export async function findById(req, res) {
@@ -55,4 +64,16 @@ export async function del(req, res) {
   } catch (error) {
     res.status(500).send({ message: error });
   }
+}
+
+const verificaPrivado = (posts) => {
+  const list = [];
+
+  posts.map(post => {
+    if (post && !post.privado) {
+      list.push(post);
+    }
+  });
+
+  return list;
 }
