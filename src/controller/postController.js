@@ -12,8 +12,8 @@ export async function findAll(req, res) {
 
 export async function findByUser(req, res) {
   const { id } = req.params;
-  const { logado } = req.body;
-
+  const { logado } = req.headers;
+  
   if (logado == id) {
     const logPosts = await findPostByUser(id);
     console.log(logPosts.length)

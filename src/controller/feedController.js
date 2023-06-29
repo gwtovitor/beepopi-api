@@ -10,12 +10,11 @@ export const getFeed = async (req, res) => {
     const profile = await findProfileById(id);
 
     const feed = await getPostList(profile.following);
-    console.log(feed.length);
+
 
     if (feed.length > 0) {
       for (let i = 0; i < feed.length; i++) {
         const postObj = await Post.findById(feed[i]);
-        console.log(postObj);
 
         if (postObj && !postObj.privado && !posts.includes(feed[i])) {
           posts.push(feed[i]);
@@ -23,7 +22,7 @@ export const getFeed = async (req, res) => {
       }
     }
 
-    console.log(posts.length);
+  
     res.status(200).send(posts);
   } catch (err) {
     res.status(500).send({ message: err.toString() });
