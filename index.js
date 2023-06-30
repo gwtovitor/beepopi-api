@@ -15,6 +15,8 @@ import { feedRoutes } from './src/routes/feedRoutes.js';
 import { vertRoutes } from './src/routes/vertRoutes.js';
 import { comentarioRoutes } from './src/routes/comentarioRoutes.js';
 import { documentosRoutes } from './src/routes/documentosRoutes.js';
+import { chat } from './src/controller/chatController.js';
+import { chatRoutes } from './src/routes/chatRoutes.js';
 
 const app = express();
 
@@ -33,5 +35,8 @@ app.use("/vert", vertRoutes);
 app.use("/upload", uploadRoutes);
 app.use("/comentario", comentarioRoutes);
 app.use("/wallet", walletRoutes);
+app.use("/chat", chatRoutes);
 
-app.listen(3333, () => console.log('online port 3333'));
+const server = app.listen(3333, () => console.log('online port 3333'));
+
+chat(server);
